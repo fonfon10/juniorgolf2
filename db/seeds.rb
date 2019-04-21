@@ -22,10 +22,11 @@ UserType.delete_all
 
 
 
-ut_admin = UserType.create!(name: "Admin")
 ut_player = UserType.create!(name: "Player")
-ut_Operator = UserType.create!(name: "Operator")
 ut_Observer = UserType.create!(name: "Observer")
+ut_Operator = UserType.create!(name: "Operator")
+ut_admin = UserType.create!(name: "Admin")
+
 
 status_reg = Status.create!(name: "Registered")
 status_inconsideration = Status.create!(name: "In Consideration")

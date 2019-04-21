@@ -5,14 +5,43 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    
+    @user = User.new
+    @user_types = UserType.first(3).map { |i| [i.name, i.id]}
+
+   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     
+     @user_types = UserType.all.map { |i| [i.name, i.id]}
+     @user = User.new(user_params)
+    # @user.first_name = "Serge"
+    # @user.last_name = "Lafontaine"
+
+
+     puts("*********************")
+     puts(params[:first_name])
+     puts("*********************")
+
+
+      if @user.save
+        redirect_to root_url
+
+      else
+        render "new"
+      end 
+   end
+
+
+
+   def show
+    @user = User.find(params[:id])
+    @user_types = UserType.all.map { |i| [i.name, i.id]}
+     
+   end
+
 
   # GET /resource/edit
    def edit
@@ -47,7 +76,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :dob, 
         :ovga_team, :gender_boy, :gender_girl, 
-        :category_jun,:category_juv,:category_ban,:category_pee,:category_ato)
+        :category_jun,:category_juv,:category_ban,:category_pee,:category_ato, :user_type_id,
+        :password, :password_confirmation)
     end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :competitions
 
 
-  validates_presence_of :first_name, :last_name, :email, :dob
+  validates_presence_of :first_name, :last_name, :email
   
 end
