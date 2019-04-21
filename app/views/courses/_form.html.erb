@@ -1,0 +1,51 @@
+<%= form_with(model: course, local: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :course_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :address %>
+  </div>
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :course_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :province %>
+    <%= select_tag(:province_id, options_for_select(@provinces), :selected => :province_id)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= select_tag(:country_id, options_for_select(@countries), :selected => :country_id)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip %>
+    <%= form.text_field :zip, id: :course_zip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :course_url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,70 @@
+<%= form_with(model: tournament, local: true) do |form| %>
+  <% if tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
+
+      <ul>
+      <% tournament.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :tournament_name %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :tour %>
+    <%= form.select(:tour_id, @tours)%>    
+  </div>
+  <div class="field">
+    <%= form.label :course %>
+    <%= form.select(:course_id, @courses)%>    
+  </div>
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select(:category_id, @categories)%>    
+  </div>
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field(:gender, @genders)%>    
+  </div>
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.select(:level_id, @levels)%>    
+  </div>
+
+  <div class="field">
+    <%= form.label :days %>
+    <%= form.number_field :days, id: :tournament_days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date, id: :tournament_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reg_deadline %>
+    <%= form.date_select :reg_deadline, id: :tournament_reg_deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qual_required %>
+    <%= form.check_box :qual_required, id: :tournament_qual_required %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments, id: :tournament_comments %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

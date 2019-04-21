@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tour_id: 1
+  course_id: 1
+  category_id: 1
+  gender_id: 1
+  level_id: 1
+  days: 1
+  start_date: 2019-04-03
+  reg_deadline: 2019-04-03
+  qual_required: false
+  comments: MyText
+
+two:
+  name: MyString
+  tour_id: 1
+  course_id: 1
+  category_id: 1
+  gender_id: 1
+  level_id: 1
+  days: 1
+  start_date: 2019-04-03
+  reg_deadline: 2019-04-03
+  qual_required: false
+  comments: MyText

@@ -1,0 +1,72 @@
+<%= form_with(model: tournament, local: true) do |form| %>
+  <% if tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
+
+      <ul>
+      <% tournament.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :tournament_name %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :tour %>
+    <%= select_tag(:tour_id, options_for_select(@tours), :selected => :tour_id)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :course %>
+    <%= select_tag(:course_id, options_for_select(@courses), :selected => :course_id)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= select_tag(:category_id, options_for_select(@categories), :selected => :category_id)%>
+  </div>
+  <div class="field">
+    <%= form.label :gender %>
+    <%= select_tag(:gender_id, options_for_select(@genders), :selected => :gender_id)%>
+  </div>
+  <div class="field">
+    <%= form.label :level %>
+    <%= select_tag(:level_id, options_for_select(@levels), :selected => :level_id)%>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :days %>
+    <%= form.number_field :days, id: :tournament_days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date, id: :tournament_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reg_deadline %>
+    <%= form.date_select :reg_deadline, id: :tournament_reg_deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qual_required %>
+    <%= form.check_box :qual_required, id: :tournament_qual_required %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments, id: :tournament_comments %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+    <%= link_to "JuniorGolf", root_path, class:"navbar-brand" %>
+
+
+
+<% if current_user.present? %>
+
+  <!-- Collapsable button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarsExample03">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to edit_user_registration_path(current_user) do %>
+              <i class="fas fa-user"></i> Profile
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt "></i> Signout
+          <% end %>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+
+<% end %>
+
+
+
+
+
+</nav>
+
+
+
+
