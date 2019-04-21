@@ -5,4 +5,3 @@ require_relative 'application'
 Rails.application.initialize!
 
 
-config.action_mailer.default_url_options = { :host => 'juniorgolf.heroku.com' }
