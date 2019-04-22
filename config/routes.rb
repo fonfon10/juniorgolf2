@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   get 'home/Index'
 
   resources :user_types
