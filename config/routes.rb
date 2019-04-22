@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/Index'
+
   resources :user_types
   resources :tournaments
   resources :levels

@@ -20,6 +20,35 @@
   </div>
 
 
+  <div>
+    <%= f.label "Boy" %>
+    <%= f.check_box :gender_boy %>
+
+    <span>   </span>
+    <%= f.label "Girl" %>
+    <%= f.check_box :gender_girl %>
+  </div>
+
+
+  <div>
+    <%= f.label "Junior" %>
+    <%= f.check_box :category_jun %>
+    <i>   /  </i>
+    <%= f.label "Juvenile" %>
+    <%= f.check_box :category_juv %>
+    <i>   /  </i>
+    <%= f.label "Bantam" %>
+    <%= f.check_box :category_ban %>
+    <i>   /  </i>
+    <%= f.label "Pee-Wee" %>
+    <%= f.check_box :category_pee %>
+    <i>   /  </i>
+    <%= f.label "Atom" %>
+    <%= f.check_box :category_ato %>
+  </div>
+
+
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

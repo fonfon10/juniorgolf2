@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     
     @user = User.new
-    @user_types = UserType.first(3).map { |i| [i.name, i.id]}
+    @user_types = UserType.first(2).map { |i| [i.name, i.id]}
 
    end
 
@@ -17,18 +17,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
      
      @user_types = UserType.all.map { |i| [i.name, i.id]}
      @user = User.new(user_params)
-    # @user.first_name = "Serge"
-    # @user.last_name = "Lafontaine"
 
+     if @user.save
+      flash[:notice] = "Successful Registration.  Check your email for activation link"
 
-     puts("*********************")
-     puts(params[:first_name])
-     puts("*********************")
-
-
-      if @user.save
-        redirect_to root_url
-
+        render "home/Index"
       else
         render "new"
       end 
@@ -49,11 +42,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
 
   # PUT /resource
-   def update
-     super
-     @user = current_user
-     @user.update!(user_params)
-   end
+   #def update
+   #  super
+   #  @user = current_user
+   #  @user.update!(user_params)
+   #end
 
   # DELETE /resource
   # def destroy
@@ -71,24 +64,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # protected
 
+   protected
+
+    def update_resource(resource, user_params)
+      resource.update_without_password(user_params)
+    end
+
   private
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :dob, 
         :ovga_team, :gender_boy, :gender_girl, 
         :category_jun,:category_juv,:category_ban,:category_pee,:category_ato, :user_type_id,
-        :password, :password_confirmation)
+      :password, :password_confirmation)
     end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+#   def configure_sign_up_params
+#     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :dob, 
+#        :ovga_team, :gender_boy, :gender_girl, 
+#        :category_jun,:category_juv,:category_ban,:category_pee,:category_ato, :user_type_id])
+#   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+#   def configure_account_update_params
+#     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :email, :dob, 
+#        :ovga_team, :gender_boy, :gender_girl, 
+#        :category_jun,:category_juv,:category_ban,:category_pee,:category_ato, :user_type_id])
+#   end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

@@ -1,67 +1,51 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar-brand">
     <%= link_to "JuniorGolf", root_path, class:"navbar-brand" %>
+  </nav>
 
 
 
 <% if current_user.present? %>
 
-  <!-- Collapsable button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <%= link_to '<button type="button" class="btn btn-success ml-auto mr-1">New Password</button>'.html_safe, new_user_password_path %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav text-right">
 
 
-  <div class="collapse navbar-collapse" id="navbarsExample03">
-    <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" class = "whitetext">
+            <a class="nav-link">
+              <%= link_to edit_user_registration_path(current_user) do %>
+                  <i class="fas fa-user whitetext"></i> <span class = "whitetext">Profile</span>
+              <% end %>
+            </a>
+          </li>
+          <li class="nav-item active class = "whitetext">
+            <a class="nav-link">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fas fa-sign-out-alt whitetext "></i> <span class = "whitetext">Signout</span>
+              <% end %>
+            </a>
+          </li>
+
+        </ul>
 
 
-    <% if current_user.user_type.name == "Admin"%>
-        
-      <li class="nav-item ">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >New</a>
-        <div class="dropdown-menu" >
-          <a class="dropdown-item">
-            <%= link_to 'Add Course', '#'%>
-          </a>
-          <a class="dropdown-item">
-            <%= link_to 'Add Tournament', '#'%>
-          </a>
-        </div>
-      </li>
-
-    <% end %> 
+<% else %>
 
 
+  <%= link_to '<button type="button" class="btn btn-success pull-right mr-0.25 fas fa-sign-in-alt whitetext "> <span class="whitetext">Signin</span></button>'.html_safe, root_path %>
 
-
-
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to edit_user_registration_path(current_user) do %>
-              <i class="fas fa-user"></i> Profile
-          <% end %>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fas fa-sign-out-alt "></i> Signout
-          <% end %>
-        </a>
-      </li>
-    </ul>
-
-  </div>
 
 
 <% end %>
 
-
+    </div>
 
 
 
 </nav>
-
-
-
-

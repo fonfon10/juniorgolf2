@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+  <nav class="navbar-brand">
+    <%= link_to "JuniorGolf", root_path, class:"navbar-brand" %>
+    </nav>
+
+
+<% if current_user.present? %>
+
+  <!-- Collapsable button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarsExample03">
+    <ul class="navbar-nav mr-auto text-right">
+
+
+    <% if current_user.user_type.name == "Admin"%>
+        
+      <li class="nav-item ">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >New</a>
+        <div class="dropdown-menu" >
+          <a class="dropdown-item">
+            <%= link_to 'Add Course', '#'%>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to 'Add Tournament', '#'%>
+          </a>
+        </div>
+      </li>
+
+    <% end %> 
+
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to edit_user_registration_path(current_user) do %>
+              <i class="fas fa-user"></i> Profile
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt "></i> Signout
+          <% end %>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+<% else %>
+
+    <ul class="navbar-nav mr-auto text-right">
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt"></i> Signin
+          <% end %>
+        </a>
+      </li>
+    </ul>
+
+<% end %>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+  <%= link_to '<button type="button" class="btn btn-success ml-auto mr-1"/button>'.html_safe, root_path %>
+
+
+
+
+
+
+
+

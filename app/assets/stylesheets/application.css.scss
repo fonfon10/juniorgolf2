@@ -20,44 +20,9 @@
 
 
 
-
-
-/* Navbar and navigation styles */
-
-.navbar {
-  font-family: 'Lato', sans-serif;
-  text-transform: uppercase;
+.whitetext {
+  color: white;
 }
-
-.navbar-default {
-
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: #007D00;
-
-  .navbar-nav > li > a {
-    color: #FFF;
-  }
-
-  .navbar-link {
-    color: #FFF;
-  }
-
-  .navbar-brand {
-    color: #FFF;
-    letter-spacing: 1.25px;
-    font-size: 1em;
-  }
-
-}
-
-
-
-
-/* not reviewed */
-
-
-
 
 
 
@@ -75,35 +40,12 @@
 
   }
 
-
-
 }
 
 
-.btn {
-  padding: 2px;
-  margin: 10px;
-  color: white;
+.btn-right{
+  vertical-align: right;
 }
-
-
-
-/* Mixins, variables, etc... */
-
-@mixin nav_link_hover {
-  transition: 0.4s;
-  color: lighten(#222, 50%);
-  text-decoration: none;
-}
-
-/* Universal styles */
-
-.attendevent-2 {
-
-  background-color:#00ffff;
-  font-weight: bold;
-}
-
 
 
 body {
@@ -115,68 +57,9 @@ a {
   color: darken(#e7e7e7, 70%);
 }
 
-.jumbotron {
-  text-align: center;
-}
-
 table {
   text-align: center;
   color: black;
   border: 1px solid black;
 
-}
-.current-1 span{
-color:red;  }
-
-
-li {
-  padding: 15px;
-  float:left;
-}
-
-.navbar-right {
-
-  float:right;
-}
-
-
-/* Item styles */
-
-.item {
-  border-bottom: 1px solid #e7e7e7;
-  padding-bottom: 1.5em;
-  .item-title {
-    font-family: 'Lato', sans-serif;
-    margin-top: 0;
-  }
-  .item-desc {
-    font-size: 1em;
-  }
-  .time-ago {
-    color: darken(#e7e7e7, 50%);
-    font-size: 0.55em;
-    letter-spacing: 1.25;
-  }
-  .item-sub-title {
-    margin-bottom: 0;
-  }
-}
-
-.item:nth-child(n+1) {
-  padding-top: 1.5em;
-}
-
-.bottom_cta {
-  text-align: center;
-  padding: 7.5rem 0;
-  h2 {
-    color: #2B2E2E;
-    font-size: 3rem;
-    margin: 0;
-  }
-  p {
-      font-size: 1.25rem;
-      margin: 0 0 2.5rem 0;
-      color: #a7a8a8;
-    }
 }

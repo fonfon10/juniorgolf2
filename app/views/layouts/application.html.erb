@@ -19,7 +19,11 @@
 
   <body>
     <%= render 'layouts/navbar'  %>
+ <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 
+      
     <% if user_signed_in?  %>
       <h3> <%= current_user.first_name %> <%=current_user.last_name %> 
 
@@ -69,7 +73,7 @@
       <div class="jumbotron">
 
         <%= yield %>
-      </div>
+        </div>
     </div>
         
 
