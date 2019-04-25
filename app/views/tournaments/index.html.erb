@@ -12,38 +12,65 @@
         <%= date.day %>
 
         <% tournaments.each do |tournament| %>
-
-        <!-- TEAM OTTAWA filter -->
-          <% if tournament.tour.acronym == "TO" %>
-            <% if current_user.ovga_team %>
-              <% if tournament.qual_required %>
-                  <% tournament_name = "*"+tournament.name %>
-              <% else %>
-                  <% tournament_name = tournament.name %>    
-              <% end %>
-
-              <div class= <%="tournament#{tournament.tour.acronym}"%>>
-                <%= link_to tournament_name, tournament, :class => "tournament#{tournament.tour.acronym}"  %>
-              </div>
-            <% end %> 
-
-
-
-          <% else %>
-          <!-- ALL OTHERS -->
             <% if tournament.qual_required %>
                 <% tournament_name = "*"+tournament.name %>
             <% else %>
                 <% tournament_name = tournament.name %>    
             <% end %>
 
-            <div class= <%="tournament#{tournament.tour.acronym}"%>>
-              <%= link_to tournament_name, tournament, :class => "tournament#{tournament.tour.acronym}"  %>
-            </div>
+
+
+            <% if @competitions_list_tournament_id_yes.include?(tournament.id) %>
+              <% tournament_status = "YES" %>
+            <% end %>
+            <% if @competitions_list_tournament_id_no.include?(tournament.id) %>
+              <% tournament_status = "NO" %>
+            <% end %>
+
+
+            <% if (tournament.note) %>
+
+
+            <% if (!tournament.father and !tournament.mother and !tournament.other_children) %>
+                <div class = "notes"> 
+                  <%= tournament.name %>
+                </div>              
+              
+            <% end %>
+
+              <% if tournament.father  %>
+                <div class = "papa">               
+                  <%= tournament.name %>
+                </div>              
+              <% end %>
+
+              <% if tournament.mother  %>
+                <div class = "maman">                
+                  <%= tournament.name %>
+                </div>              
+              <% end %>
+              <% if tournament.other_children  %>
+                <div class = "child">                
+                  <%= tournament.name %>
+                </div>              
+              <% end %>
+
+
+              
+
+
+            <% else %>
+
+
+                <div class= <%="tournament#{tournament.tour.acronym}"%>>
+                  <%= link_to tournament_name, tournament, 
+                  :class => "tournament#{tournament.tour.acronym} tournament#{tournament_status}"  %>
+                </div>
+
+            <% end %>
 
           <% end %>
 
-        <% end %>
 
 
 

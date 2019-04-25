@@ -1,0 +1,81 @@
+<h1>Dashboard</h1>
+
+  <% if current_user.user_type.name == "Admin" %>
+
+
+    <% if @users != nil %>
+      <table class="table-striped">
+
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>email</th>
+            <th colspan="2">User Type</th>
+            <th>Team Ottawa</th>
+            <th>ROGC</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>                
+              <tr>
+              	<td><%= user.first_name %></td>
+              	<td><%= user.last_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.user_type.name %></td>
+                <% if user.user_type.name != "Operator" %>
+                  <td> <%= link_to toggle_operator_user_dashboard_path(user), method: :put  do %> 
+                    <span style="font-size: 1em; color: black;">
+                      <i class="fas fa-user-plus"></i>
+                    </span>           
+                    <% end %> 
+                  </td>
+                <% else %>
+                  <td>  
+                  </td>
+                <% end %>
+
+            <!-- TEAM OTTAWA --> 
+                <% if user.ovga_team %>
+                  <td> <%= link_to toggle_ovga_team_dashboard_path(user), method: :put  do %> 
+                    <span style="font-size: 1em; color: black;">
+                      <i class="fas fa-check-square"></i>
+                    </span>           
+                    <% end %> 
+                  </td>
+                <% else %>
+                  <td> <%= link_to toggle_ovga_team_dashboard_path(user), method: :put  do %> 
+                    <span style="font-size: 1em; color: grey;">
+                      <i class="fas fa-square"></i>
+                    </span>           
+                    <% end %> 
+                  </td>
+                <% end %>
+
+            <!-- ROGC OTTAWA --> 
+                <% if user.rogc_team %>
+                  <td> <%= link_to toggle_rogc_team_dashboard_path(user), method: :put  do %> 
+                    <span style="font-size: 1em; color: black;">
+                      <i class="fas fa-check-square"></i>
+                    </span>           
+                    <% end %> 
+                  </td>
+                <% else %>
+                  <td> <%= link_to toggle_rogc_team_dashboard_path(user), method: :put  do %> 
+                    <span style="font-size: 1em; color: grey;">
+                      <i class="fas fa-square"></i>
+                    </span>           
+                    <% end %> 
+                  </td>
+                <% end %>
+
+
+
+
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %> 
+  <% end %>

@@ -1,4 +1,4 @@
-<%= form_with(model: tournament, local: true) do |form| %>
+<%= form_for (tournament) do |form| %>
   <% if tournament.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
@@ -11,44 +11,76 @@
     </div>
   <% end %>
 
+
+  <% if @notes_NotTournaments %>
+    <h2>Note</h2>
+  <% else %>
+    <h2>Tournament</h2>
+  <% end %>
+
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :tournament_name %>
   </div>
 
 
+
+
+    
+
+    <div class="field">
+      <%= form.label :tour %>
+      <%= select_tag(:tour_id, options_for_select(@tours), :selected => :tour_id)%>
+    </div>
+
+    <div class="field">
+      <%= form.label :course %>
+      <%= select_tag(:course_id, options_for_select(@courses), :selected => :course_id)%>
+    </div>
+
+
+    <div>
+      <%= form.label "Boy" %>
+      <%= form.check_box :gender_boy %>
+
+      <span>   </span>
+      <%= form.label "Girl" %>
+      <%= form.check_box :gender_girl %>
+    </div>
+
+
+    <div>
+      <%= form.label "Junior" %>
+      <%= form.check_box :category_jun %>
+      <i>   /  </i>
+      <%= form.label "Juvenile" %>
+      <%= form.check_box :category_juv %>
+      <i>   /  </i>
+      <%= form.label "Bantam" %>
+      <%= form.check_box :category_ban %>
+      <i>   /  </i>
+      <%= form.label "Pee-Wee" %>
+      <%= form.check_box :category_pee %>
+      <i>   /  </i>
+      <%= form.label "Atom" %>
+      <%= form.check_box :category_ato %>
+    </div>
+
+    <div class="field">
+      <%= form.label :level %>
+      <%= select_tag(:level_id, options_for_select(@levels), :selected => :level_id)%>
+    </div>
+
+
   <div class="field">
-    <%= form.label :tour %>
-    <%= select_tag(:tour_id, options_for_select(@tours), :selected => :tour_id)%>
+    <%= form.label :start_time %>
+    <%= form.date_select :start_time, id: :tournament_start_time %>
   </div>
 
   <div class="field">
-    <%= form.label :course %>
-    <%= select_tag(:course_id, options_for_select(@courses), :selected => :course_id)%>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= select_tag(:category_id, options_for_select(@categories), :selected => :category_id)%>
-  </div>
-  <div class="field">
-    <%= form.label :gender %>
-    <%= select_tag(:gender_id, options_for_select(@genders), :selected => :gender_id)%>
-  </div>
-  <div class="field">
-    <%= form.label :level %>
-    <%= select_tag(:level_id, options_for_select(@levels), :selected => :level_id)%>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :days %>
-    <%= form.number_field :days, id: :tournament_days %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :tournament_start_time %>
+    <%= form.label :end_time %>
+    <%= form.date_select :end_time, id: :tournament_end_time %>
   </div>
 
   <div class="field">
@@ -58,9 +90,17 @@
 
   <div class="field">
     <%= form.label :qual_required %>
-    <%= form.check_box :qual_required, id: :tournament_qual_required %>
+    <%= form.check_box :qual_required, id: :qual_required %>
   </div>
 
+  <div class="field">
+    <%= form.label :fee %>
+    <%= form.number_field :fee, id: :tournament_fee %>
+  </div>
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_area :url, id: :tournament_url %>
+  </div>
   <div class="field">
     <%= form.label :comments %>
     <%= form.text_area :comments, id: :tournament_comments %>

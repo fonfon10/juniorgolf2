@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
+
+
+  get 'dashboards/index'
 
   get 'home/Index'
 
   resources :user_types
-  resources :tournaments
+#  resources :tournaments
   resources :levels
   resources :genders
   resources :categories
@@ -21,6 +23,17 @@ Rails.application.routes.draw do
         passwords: 'users/passwords'
       }
 
+
+resources :dashboards do
+  member do
+    put "toggle_ovga_team", to: "dashboards#toggle_ovga_team"
+    put "toggle_rogc_team", to: "dashboards#toggle_rogc_team"
+    put "toggle_operator_user", to: "dashboards#toggle_operator_user"
+  end
+end
+
+post '/tournaments/create_notes' => 'tournaments#create_notes'
+get '/tournaments/newnotes' => 'tournaments#newnotes'
 
 resources :tournaments do 
       member do

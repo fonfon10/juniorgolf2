@@ -18,6 +18,12 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.datetime :reg_deadline
       t.boolean :qual_required
       t.text :comments
+      t.integer :user_id
+      t.boolean :private
+      t.boolean :mother
+      t.boolean :father
+      t.boolean :other_children
+      t.boolean :note
 
       t.timestamps
     end

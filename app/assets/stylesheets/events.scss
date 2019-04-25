@@ -5,6 +5,7 @@
 
 .tournamentCJGA {
 	color: orange;
+
 }
 
 .tournamentGO {
@@ -34,9 +35,43 @@
 .tournamentPJGT {
   color: brown;
 }
+.tournamentROGC {
+  color: #405d27;
+}
 
+.tournamentNO {
+  color: lightgrey;
+  text-decoration: line-through;
+}
 
+.tournamentYES {
+  background-color: yellow;
+}
+.notes {
+  background-color: black;
+  color: white;
+}
+.maman {
+  background-color: darkred;
+  color: white;
+}
+.papa {
+  background-color: darkblue;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
 
+.child {
+  background-color: orange;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
 
 .simple-calendar {
   .day {

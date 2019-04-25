@@ -1,0 +1,69 @@
+<%= form_for (tournament), :url => url_for(:controller => 'tournaments', :action => 'create_notes') do |form| %>
+  <% if tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
+
+      <ul>
+      <% tournament.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :tournament_name %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.date_select :start_time, id: :tournament_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.date_select :end_time, id: :tournament_end_time %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :father %>
+    <%= form.check_box :father, id: :father %>
+  </div>
+  <div class="field">
+    <%= form.label :mother %>
+    <%= form.check_box :mother, id: :mother %>
+  </div>
+  <div class="field">
+    <%= form.label :other_children %>
+    <%= form.check_box :other_children, id: :other_children %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments, id: :tournament_comments %>
+  </div>
+
+
+
+
+    
+    <div class="field hidden">
+      <%= select_tag(:tour_id, options_for_select(@tours), :selected => :tour_id)%>
+      <%= select_tag(:course_id, options_for_select(@courses), :selected => :course_id)%>
+      <%= select_tag(:level_id, options_for_select(@levels), :selected => :level_id)%>
+    </div>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

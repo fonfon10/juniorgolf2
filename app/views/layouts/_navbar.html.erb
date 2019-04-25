@@ -6,25 +6,30 @@
 
 
 <% if current_user.present? %>
+  <% if current_user.user_type.name == "Admin"%>
 
-  <%= link_to '<button type="button" class="btn btn-success ml-auto mr-1">New Password</button>'.html_safe, new_user_password_path %>
+    <%= link_to '<button type="button" class="btn btn-success ml-auto mr-1">Dashboard</button>'.html_safe, dashboards_path %>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  <% end %>
+
+
+
 
     <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav text-right">
 
 
-          <li class="nav-item active" class = "whitetext">
+          <li class="nav-item active whitetext">
             <a class="nav-link">
               <%= link_to edit_user_registration_path(current_user) do %>
                   <i class="fas fa-user whitetext"></i> <span class = "whitetext">Profile</span>
               <% end %>
             </a>
           </li>
-          <li class="nav-item active class = "whitetext">
+          <li class="nav-item active whitetext">
             <a class="nav-link">
               <%= link_to destroy_user_session_path, method: :delete do %>
                   <i class="fas fa-sign-out-alt whitetext "></i> <span class = "whitetext">Signout</span>

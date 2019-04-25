@@ -3,11 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :trackable
+         :trackable
 
   belongs_to :user_type
 
   has_many :competitions
+  has_many :tournaments
 
 
   validates_presence_of :first_name, :last_name, :email

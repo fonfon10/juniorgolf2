@@ -74,6 +74,12 @@ ActiveRecord::Schema.define(version: 20190416011909) do
     t.datetime "reg_deadline"
     t.boolean "qual_required"
     t.text "comments"
+    t.integer "user_id"
+    t.boolean "private"
+    t.boolean "mother"
+    t.boolean "father"
+    t.boolean "other_children"
+    t.boolean "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "fee"
